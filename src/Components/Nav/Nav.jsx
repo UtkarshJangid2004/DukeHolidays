@@ -41,11 +41,11 @@ const Nav = () => {
             
             {/* Desktop menu */}
             <ul className="hidden md:flex space-x-4 lg:space-x-8">
-              <li>
+                <Link to="/" className="text-gray-700 hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Home</Link>
                 <Link to="/offers" className="text-gray-700 hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                   Offers & Packages
                 </Link>
-              </li>
+              
               <li>
                 <Link to="/encyclopedia" className="text-gray-700 hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                   Encyclopedia
