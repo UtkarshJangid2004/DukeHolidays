@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from "../../assets/logo.png"
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,10 +15,20 @@ const Nav = () => {
       <nav className="bg-white shadow-lg fixed w-full top-7 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0">
-              <Link to="/" className="text-xl sm:text-2xl font-bold text-indigo-600">Apollo Expeditions</Link>
+            <div className="flex-shrink-0 -ml-20">
+              <Link to="/" className="text-xl sm:text-2xl font-bold text-indigo-600">
+                <img 
+                  src={logo} 
+                  alt="Apollo Expeditions Logo"
+                  className="h-48 w-auto object-contain" 
+                  loading="eager"
+                  width="200"
+                  height="64"
+                />
+              </Link>
             </div>
             
+
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
