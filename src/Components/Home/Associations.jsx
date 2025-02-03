@@ -11,14 +11,14 @@ const Associations = () => {
     {
       id: 2, 
       name: "World Wildlife Fund",
-      logo: "./src/assets/L2.png",
+      logo: "../src/assets/L2.png",
       description: "Conservation Partner"
 
     },
     {
       id: 3,
       name: "International Mountain Guides",
-      logo: "./src/assets/L1.avif", 
+      logo: "../src/assets/L1.avif", 
       description: "Safety & Training Partner"
 
     }
