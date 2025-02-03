@@ -1,25 +1,29 @@
 import React from 'react'
+import logo from "../../assets/L1.avif"
 
 const Associations = () => {
   const partners = [
     {
       id: 1,
       name: "National Geographic",
-      logo: "../../assets/L1.avif",
+      logo: logo,
       description: "Official Expedition Partner"
+
     },
     {
       id: 2, 
       name: "World Wildlife Fund",
-      logo: "../../assets/L2.png",
+        logo: logo,
       description: "Conservation Partner"
+
 
     },
     {
       id: 3,
       name: "International Mountain Guides",
-      logo: "../../assets/L1.avif", 
+      logo: logo, 
       description: "Safety & Training Partner"
+
 
 
     }
@@ -34,6 +38,7 @@ const Associations = () => {
             Trusted Partners & Associations
           </h3>
         </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {partners.map((partner) => (
