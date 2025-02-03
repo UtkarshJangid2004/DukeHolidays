@@ -6,6 +6,8 @@ import Offers from './Components/Offers/Offers'
 import Encyclopedia from './Components/Encyclopedia/Encyclopedia'
 import Contact from './Components/Contact/Contact'
 import Vlogs from './Components/Vlogs/Vlogs'
+import Try from './Components/Try/Try'
+import Footer from './Components/Footer/Footer'
 const App = () => {
   return (
     <div className="flex flex-col">
@@ -18,8 +20,10 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/vlogs" element={<Vlogs />} />
         </Routes>
+        <Footer />
       </div>
     </div>
+    // <><Try/></>
   )
 }
 
