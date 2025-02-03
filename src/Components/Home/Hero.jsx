@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from "react";
+import video1 from "../../assets/1.mp4"
+import video2 from "../../assets/2.mp4"
+import video3 from "../../assets/3.mp4"
 
 const Hero = () => {
   const videoData = [
+
     {
-      url: "/src/assets/1.mp4",
+      url: video1,
       text: "Text for video 1"
     },
+
     {
-      url: "/src/assets/2.mp4",
+      url: video2,
       text: "Text for video 2"
     },
+
     {
-      url: "/src/assets/3.mp4", 
+      url: video3, 
       text: "Text for video 3"
     }
+
   ];
 
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);

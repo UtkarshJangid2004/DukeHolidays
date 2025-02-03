@@ -1,19 +1,23 @@
 import React from 'react'
-import logo from "../../assets/L1.avif"
+import logo1 from "../../assets/L1.avif"
+import logo2 from "../../assets/L2.png"
+import logo3 from "../../assets/L2.png"
+
+
 
 const Associations = () => {
   const partners = [
     {
       id: 1,
       name: "National Geographic",
-      logo: logo,
+      logo: logo1,
       description: "Official Expedition Partner"
 
     },
     {
       id: 2, 
       name: "World Wildlife Fund",
-        logo: logo,
+        logo: logo2,
       description: "Conservation Partner"
 
 
@@ -21,7 +25,7 @@ const Associations = () => {
     {
       id: 3,
       name: "International Mountain Guides",
-      logo: logo, 
+      logo: logo1, 
       description: "Safety & Training Partner"
 
 

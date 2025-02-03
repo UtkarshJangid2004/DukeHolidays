@@ -1,30 +1,36 @@
 import React from 'react';
+import Himalayas from "../../assets/Himalayas.jpg"
+import Amazon from "../../assets/Amazon.jpg"
+import Africa from "../../assets/Africa.jpeg"
 
 const UpcomingTrips = () => {
   const upcomingTrips = [
     {
+
       id: 1,
       title: "Himalayan Adventure Trek",
       date: "15-25 Dec 2023",
       location: "Nepal",
       price: "$2,499",
-      image: "/src/assets/Himalayas.jpg",
+      image: Himalayas,
     },
     {
       id: 2, 
+
       title: "Amazon Rainforest Expedition",
       date: "5-15 Jan 2024",
       location: "Brazil",
       price: "$3,299",
-      image: "/src/assets/Amazon.jpg",
+      image: Amazon,
     },
     {
       id: 3,
+
       title: "African Safari Tour",
       date: "20-30 Jan 2024", 
       location: "Kenya",
       price: "$4,199",
-      image: "/src/assets/Africa.jpeg",
+      image: Africa,
     },
   ];
 

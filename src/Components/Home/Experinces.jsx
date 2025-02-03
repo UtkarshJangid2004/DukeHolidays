@@ -1,22 +1,28 @@
 import React from 'react'
+import Ex1 from "../../assets/Ex1.jpg"
+import Ex2 from "../../assets/Ex2.jpeg"
+import Ex3 from "../../assets/Ex3.jpg"
 
 const Experinces = () => {
   const testimonials = [
     {
+
       id: 1,
       name: "Sarah Johnson",
       trip: "Himalayan Adventure Trek",
       quote: "An incredible journey that pushed my limits. The guides were exceptional and the views were breathtaking!",
-      image: "/src/assets/Ex1.jpg",
+      image: Ex1,
       rating: 3
+
     },
     {
       id: 2,
       name: "Michael Chen",
       trip: "Amazon Rainforest Expedition",
       quote: "Apollo Expeditions provided an unforgettable adventure. The attention to detail and local knowledge made this trip special.",
-      image: "/src/assets/Ex2.jpeg",
+      image: Ex2,
       rating: 5
+
 
     },
     {
@@ -24,8 +30,9 @@ const Experinces = () => {
       name: "Emma Williams",
       trip: "African Safari Tour",
       quote: "From start to finish, an amazing experience. Saw incredible wildlife and stayed in beautiful accommodations.",
-      image: "/src/assets/Ex3.jpg",
+      image: Ex3,
       rating: 4
+
 
     }
   ];

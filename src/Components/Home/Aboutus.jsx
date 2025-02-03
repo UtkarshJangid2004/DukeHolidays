@@ -1,4 +1,5 @@
 import React from "react";
+import taj from "../../assets/taj_mahal.jpg"
 
 const AboutUs = () => {
   return (
@@ -9,10 +10,11 @@ const AboutUs = () => {
           {/* Image Side */}
           <div className="w-full md:w-1/2">
             <img 
-              src="/src/assets/taj_mahal.jpg" 
+              src={taj} 
               alt="Adventure Travel"
               className="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
             />
+
 
           </div>
 
