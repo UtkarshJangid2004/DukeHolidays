@@ -5,22 +5,18 @@ import video3 from "../../assets/3.mp4"
 
 const Hero = () => {
   const videoData = [
-
     {
       url: video1,
       text: "Text for video 1"
     },
-
     {
       url: video2,
       text: "Text for video 2"
     },
-
     {
       url: video3, 
       text: "Text for video 3"
     }
-
   ];
 
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -30,17 +26,16 @@ const Hero = () => {
     const videoElement = document.getElementById('heroVideo');
     
     const handleVideoEnd = () => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentVideoIndex((prevIndex) => 
-          prevIndex === videoData.length - 1 ? 0 : prevIndex + 1
-        );
-        setIsTransitioning(false);
-      }, 400); // Increased duration for smoother transition
+      // Immediately switch to next video without animation
+      setCurrentVideoIndex((prevIndex) => 
+        prevIndex === videoData.length - 1 ? 0 : prevIndex + 1
+      );
     };
 
     if (videoElement) {
       videoElement.addEventListener('ended', handleVideoEnd);
+      // Preload the next video
+      videoElement.load();
     }
 
     return () => {
@@ -58,17 +53,14 @@ const Hero = () => {
           autoPlay
           muted
           playsInline
-          className={`absolute w-full h-full object-cover transform transition-all duration-800 ${
-            isTransitioning ? 'scale-110 blur-sm opacity-0' : 'scale-100 blur-0 opacity-100'
-          }`}
+          preload="auto"
+          className="absolute w-full h-full object-cover opacity-90  blur-[4px]"
           src={videoData[currentVideoIndex].url}
         />
 
         <div className="absolute inset-0 bg-opacity-50"></div>
 
-        <div className={`relative text-center text-white px-4 md:px-6 lg:px-8 transform transition-all duration-800 ${
-          isTransitioning ? 'translate-y-10 opacity-0' : 'translate-y-0 opacity-100'
-        }`}>
+        <div className="relative text-center text-white px-4 md:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
             {videoData[currentVideoIndex].text}
           </h1>
