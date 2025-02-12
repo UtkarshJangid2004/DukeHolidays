@@ -54,7 +54,7 @@ const Hero = () => {
           muted
           playsInline
           preload="auto"
-          className="absolute w-full h-full object-cover opacity-90  blur-[4px]"
+          className="absolute w-full h-full object-cover opacity-90  blur-[1px]"
           src={videoData[currentVideoIndex].url}
         />
 
