@@ -38,7 +38,26 @@ const Nav = () => {
       name: "Bhutan",
     },
   ]);
+  const [offers, setOffers] = useState([
+    {
+      id: "treks-and-hikes",
+      name: "Treks and Hikes",
+    },
+    {
+      id: "pilgrimage-tours",
+      name: "Pilgrimage Tours",
+    },
+    {
+      id: "international-tours",
+      name: "International Tours",
+    },
+    {
+      id: "india-inbound-domestic-tours",
+      name: "India Inbound/Domestic Tours",
+    },
+  ]);
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
+  const [showOffersDropdown, setShowOffersDropdown] = useState(false);
 
   // useEffect(() => {
   //   // Fetch countries from dummy API
@@ -62,15 +81,15 @@ const Nav = () => {
 
   return (
     <>
-      <div className="bg-indigo-100 w-full fixed top-0 z-50 h-7 flex items-center">
+      {/* <div className="bg-white w-full absolute top-0 z-50 h-7 flex items-center">
         <div className="mx-auto px-2 sm:px-4 lg:px-16 w-full h-6 flex items-center">
           <p className="text-[12px] font-bold text-indigo-600 leading-none">
             Welcome to Apollo Expeditions
           </p>
         </div>
-      </div>
-      <nav className="bg-white shadow-lg fixed w-full top-7 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      </div> */}
+      <nav className="bg-transparent absolute w-full top-0 z-50">
+        <div className="max-w-10xl mx-auto px-0 sm:px-6">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
               <Link
@@ -120,33 +139,62 @@ const Nav = () => {
             </div>
 
             {/* Desktop menu */}
-            <div className="hidden lg:flex lg:items-center md:flex space-x-4 lg:space-x-8">
+            <div className="hidden lg:flex px-3 bg-gray-900/30 rounded-3xl lg:items-center md:flex space-x-4 lg:space-x-8">
               <div>
                 <Link
                   to="/"
-                  className="text-gray-700 hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  className="text-white text-[15px] hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                 >
                   Home
                 </Link>
               </div>
-              <div>
-                <Link
-                  to="/offers"
-                  className="text-gray-700 hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              <div className="relative group">
+                <button
+                  onClick={() => setShowOffersDropdown(!showOffersDropdown)}
+                  className="text-white text-[15px] hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center"
                 >
                   Offers & Packages
-                </Link>
+                  <svg
+                    className="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div className="absolute -left-3 mt-0 w-40 h-48 rounded-md shadow-lg bg-white overflow-hidden hidden group-hover:block">
+                  <div className="py-1" role="menu">
+                    <div className="max-h-48 overflow-y-auto" style={{ scrollbarWidth: "thin" }}>
+                      {offers.map((offer) => (
+                        <Link
+                          key={offer.id}
+                          to={`/${offer.id}`}
+                          className="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-indigo-600"
+                          role="menuitem"
+                        >
+                          {offer.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
               <div>
                 <Link
                   to="/vlogs"
-                  className="text-gray-700 hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  className="text-white text-[15px] hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                 >
                   Our Vlogs
                 </Link>
               </div>
               <div className="relative group">
-                <button className="text-gray-700 hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center">
+                <button className="text-white text-[15px] hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center">
                   Travel Guide
                   <svg
                     className="w-4 h-4 ml-1"
@@ -162,25 +210,27 @@ const Nav = () => {
                     />
                   </svg>
                 </button>
-                <div className="absolute left-0 mt-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block">
+                <div className="absolute -left-3 mt-0 w-40 h-48 rounded-md shadow-lg bg-white overflow-hidden hidden group-hover:block">
                   <div className="py-1" role="menu">
-                    {countries.map((country) => (
-                      <Link
-                        key={country.id}
-                        to={`/encyclopedia/${country.id}`}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-indigo-600"
-                        role="menuitem"
-                      >
-                        {country.name}
-                      </Link>
-                    ))}
+                    <div className="max-h-48 overflow-y-auto" style={{ scrollbarWidth: "thin" }}>
+                      {countries.map((country) => (
+                        <Link
+                          key={country.id}
+                          to={`/encyclopedia/${country.id}`}
+                          className="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-indigo-600"
+                          role="menuitem"
+                        >
+                          {country.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
               <div>
                 <Link
                   to="/contact"
-                  className="text-gray-700 hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  className="text-white text-[15px] hover:text-indigo-600 px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                 >
                   Contact Us
                 </Link>
@@ -198,12 +248,46 @@ const Nav = () => {
                 >
                   Home
                 </Link>
-                <Link
-                  to="/offers"
-                  className="block text-gray-700 hover:text-indigo-600 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
-                >
-                  Offers & Packages
-                </Link>
+                <div className="relative">
+                  <button
+                    onClick={() => setShowOffersDropdown(!showOffersDropdown)}
+                    className="w-full text-left text-gray-700 hover:text-indigo-600 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 flex items-center justify-between"
+                  >
+                    Offers & Packages
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  {showOffersDropdown && (
+                    <div className="pl-4">
+                      <div className="max-h-48 overflow-y-auto" style={{ scrollbarWidth: "thin" }}>
+                        {offers.map((offer) => (
+                          <Link
+                            key={offer.id}
+                            to={`/${offer.id}`}
+                            className="block text-gray-700 hover:text-indigo-600 overflow-hidden hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                            onClick={() => {
+                              setShowOffersDropdown(false);
+                              setIsMenuOpen(false);
+                            }}
+                          >
+                            {offer.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
                 <Link
                   to="/vlogs"
                   className="block text-gray-700 hover:text-indigo-600 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
@@ -232,19 +316,21 @@ const Nav = () => {
                   </button>
                   {showCountryDropdown && (
                     <div className="pl-4">
-                      {countries.map((country) => (
-                        <Link
-                          key={country.id}
-                          to={`/encyclopedia/${country.id}`}
-                          className="block text-gray-700 hover:text-indigo-600 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
-                          onClick={() => {
-                            setShowCountryDropdown(false);
-                            setIsMenuOpen(false);
-                          }}
-                        >
-                          {country.name}
-                        </Link>
-                      ))}
+                      <div className="max-h-48 overflow-y-auto" style={{ scrollbarWidth: "thin" }}>
+                        {countries.map((country) => (
+                          <Link
+                            key={country.id}
+                            to={`/encyclopedia/${country.id}`}
+                            className="block text-gray-700 hover:text-indigo-600 overflow-hidden hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                            onClick={() => {
+                              setShowCountryDropdown(false);
+                              setIsMenuOpen(false);
+                            }}
+                          >
+                            {country.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>

@@ -8,11 +8,12 @@ import Contact from './Components/Contact/Contact'
 import Vlogs from './Components/Vlogs/Vlogs'
 import Try from './Components/Try/Try'
 import Footer from './Components/Footer/Footer'
+
 const App = () => {
   return (
     <div className="flex flex-col">
-      <Nav />
-      <div className="mt-[6%]">
+      <Nav className=" absolute" />
+      <div >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/offers" element={<Offers />} />
@@ -23,7 +24,6 @@ const App = () => {
         <Footer />
       </div>
     </div>
-    // <><Try/></>
   )
 }
 

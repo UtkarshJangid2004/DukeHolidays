@@ -38,7 +38,6 @@ const UpcomingTrips = () => {
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-base text-indigo-600 font-bold tracking-wide uppercase">Plan Ahead</h2>
           <h3 className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
             Upcoming Expeditions
           </h3>

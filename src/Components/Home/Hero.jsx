@@ -1,83 +1,56 @@
-import React, { useState, useEffect } from "react";
-import video1 from "../../assets/1.mp4"
-import video2 from "../../assets/2.mp4"
-import video3 from "../../assets/3.mp4"
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Hero = () => {
-  const videoData = [
+  const images = [
     {
-      url: video1,
-      text: "Text for video 1"
+      src: "https://media.istockphoto.com/id/1455552376/photo/brihadishwara-temple-tanjore.jpg?s=1024x1024&w=is&k=20&c=u0JJKnXIYEIbRfPQaE1EfHdq7StSWfikCoCy3QawWIs=",
+      text: "Explore the ancient Brihadishwara Temple",
     },
     {
-      url: video2,
-      text: "Text for video 2"
+      src: "https://media.istockphoto.com/id/1455552376/photo/brihadishwara-temple-tanjore.jpg?s=1024x1024&w=is&k=20&c=u0JJKnXIYEIbRfPQaE1EfHdq7StSWfikCoCy3QawWIs=",
+      text: "Discover the beauty of Tanjore",
     },
     {
-      url: video3, 
-      text: "Text for video 3"
-    }
+      src: "https://media.istockphoto.com/id/1455552376/photo/brihadishwara-temple-tanjore.jpg?s=1024x1024&w=is&k=20&c=u0JJKnXIYEIbRfPQaE1EfHdq7StSWfikCoCy3QawWIs=",
+      text: "Unwind in the serene surroundings",
+    },
   ];
-
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useEffect(() => {
-    const videoElement = document.getElementById('heroVideo');
-    
-    const handleVideoEnd = () => {
-      // Immediately switch to next video without animation
-      setCurrentVideoIndex((prevIndex) => 
-        prevIndex === videoData.length - 1 ? 0 : prevIndex + 1
-      );
-    };
-
-    if (videoElement) {
-      videoElement.addEventListener('ended', handleVideoEnd);
-      // Preload the next video
-      videoElement.load();
-    }
-
-    return () => {
-      if (videoElement) {
-        videoElement.removeEventListener('ended', handleVideoEnd);
-      }
-    };
-  }, [currentVideoIndex]);
 
   return (
     <>
-      <div className="relative h-[85vh] flex items-center justify-center mx-4 md:mx-7 mt-2 md:mt-4 mb-4 md:mb-7 rounded-xl overflow-hidden">
-        <video
-          id="heroVideo"
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          className="absolute w-full h-full object-cover opacity-90  blur-[1px]"
-          src={videoData[currentVideoIndex].url}
-        />
-
-        <div className="absolute inset-0 bg-opacity-50"></div>
-
-        <div className="relative text-center text-white px-4 md:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
-            {videoData[currentVideoIndex].text}
-          </h1>
-          <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 max-w-xl md:max-w-2xl mx-auto">
-            "Life is either a daring adventure or nothing at all. Let us take
-            you on a journey that will create memories lasting a lifetime."
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 text-sm md:text-base">
-              Our Services
-            </button>
-            <button className="w-full sm:w-auto bg-transparent hover:bg-white hover:text-indigo-600 text-white font-bold py-2 md:py-3 px-6 md:px-8 rounded-lg border-2 border-white transition duration-300 text-sm md:text-base">
-              About Us
-            </button>
-          </div>
-        </div>
+      <div className="relative top-0 h-screen w-auto">
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          spaceBetween={30}
+          loop={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          className="w-full h-full"
+        >
+          {images.map((image, index) => (
+            <SwiperSlide key={index} className="w-full h-full relative">
+              <img
+                src={image.src}
+                alt={`Hero Image ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-60 -translate-y-1/2 text-white text-center">
+                <h2 className="text-5xl font-bold w-[80%]">{image.text}</h2>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </>
   );
